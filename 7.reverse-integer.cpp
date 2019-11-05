@@ -6,33 +6,29 @@
 
 // @lc code=start
 #include <iostream>
-using namespace std;
+
+static auto x = []() {
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(NULL);
+  return 0;
+}();
+
+static long result = []() {
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(NULL);
+  return 0;
+}();
 
 class Solution {
  public:
   int reverse(int x) {
-    int res = 0, flag = -1;
-    if (x == INT_MIN) {
-      return 0;
+    result = 0;
+    while (x) {
+      result = result * 10 + x % 10;
+      x /= 10;
+      if (result>INT_MAX||result<INT_MIN) return 0;
     }
-    if(x<0){
-      flag=1;
-      x=abs(x);
-    }
-    while (x>0)
-    {
-      if (res>INT_MAX/10)
-      {
-        return 0;
-      }
-      res=res*10+x%10;
-      x/=10;
-    }
-    if (flag==1)
-    {
-      res=-1*res;
-    }
-    return res;
+    return (int)result;
   }
 };
 // @lc code=end
