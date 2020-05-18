@@ -33,6 +33,11 @@ class Solution {
   }
 
  public:
+  Solution(){
+    ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+  }
   int findKthLargest(vector<int>& nums, int k) { return quickSelect(nums, nums.size() - k, 0, nums.size() - 1); }
 };
 // @lc code=end
