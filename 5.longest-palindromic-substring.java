@@ -7,33 +7,29 @@
 // @lc code=start
 class Solution {
   public String longestPalindrome(String s) {
-    if (s.length() < 2)
-      return s;
-    if (s.length() < 4 && s.charAt(0) == s.charAt(s.length() - 1))
-      return s;
-    boolean[][] dp = new boolean[s.length()][s.length()];
-    String result = Character.toString(s.charAt(0));
-    for (int i = 0; i < s.length(); ++i) {
-      for (int j = i; j < Math.min(i + 2, s.length()); ++j) {
-        if (i == j)
-          dp[i][j] = true;
-        if (j - i == 1)
-          dp[i][j] = s.charAt(i) == s.charAt(j);
+    if (s.length()==0)
+      return "";
+    int start = 0, end = 0;
+    for (int i = 0; i < s.length(); i++) {
+      int len = Math.max(expandFromMiddle(s, i, i), expandFromMiddle(s, i, i + 1));
+      if (len > end - start + 1) {
+        start = i - ((len - 1) / 2);
+        end = i + (len / 2);
       }
     }
-    int maxLength = 1;
-    for (int j = 0; j < s.length(); ++j) {
-      for (int i = 0; i < j + 1; ++i) {
-        if (j >= i + 2)
-          dp[i][j] = s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1];
-        if (dp[i][j] && j - i + 1 > maxLength) {
-          result = s.substring(i, j + 1);
-          maxLength = j - i + 1;
-        }
-      }
+    return s.substring(start, end + 1);
+  }
+
+  private int expandFromMiddle(String s, int left, int right) {
+    if (s == null || left > right)
+      return 0;
+    int len = 0;
+    while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+      len = right - left + 1;
+      left--;
+      right++;
     }
-    return result;
+    return len;
   }
 }
 // @lc code=end
-
