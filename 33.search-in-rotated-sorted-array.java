@@ -15,14 +15,14 @@ class Solution {
       ++hi;
     }
     pivot_id = hi;
-    // if (pivot_id == nums.length)
-    //   return binarySearch(nums, 0, nums.length - 1, target);
-    // if (target < nums[0] && target > nums[nums.length - 1])
-    //   return -1;
-    // else if (target >= nums[0])
-    //   return binarySearch(nums, 0, pivot_id - 1, target);
-    // else
-    //   return binarySearch(nums, pivot_id, nums.length - 1, target);
+    if (pivot_id == nums.length)
+      return binarySearch(nums, 0, nums.length - 1, target);
+    if (target < nums[0] && target > nums[nums.length - 1])
+      return -1;
+    else if (target >= nums[0])
+      return binarySearch(nums, 0, pivot_id - 1, target);
+    else
+      return binarySearch(nums, pivot_id, nums.length - 1, target);
   }
 
   private int binarySearch(int[] nums, int lo, int hi, int target) {
