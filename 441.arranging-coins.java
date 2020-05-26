@@ -24,11 +24,11 @@ class Solution {
 // @lc code=end
 
 
-// class Test {
-//   public static void main(String[] args) {
-//     int n = 5;
-//     Solution sltn = new Solution();
-//     int res = sltn.arrangeCoins(n);
-//     return;
-//   }
-// }
+class Test {
+  public static void main(String[] args) {
+    int n = 5;
+    Solution sltn = new Solution();
+    int res = sltn.arrangeCoins(n);
+    return;
+  }
+}
