@@ -11,24 +11,17 @@ class Solution {
       int mid = (begin + end) / 2;
       int pivot = nums[mid], left = begin, right = end;
       while (true) {
-        while (nums[left] < pivot)
-          ++left;
-        while (nums[right] > pivot)
-          --right;
-        if (left == right)
-          break;
+        while (nums[left] < pivot) ++left;
+        while (nums[right] > pivot) --right;
+        if (left == right) break;
         nums[left] ^= nums[right];
         nums[right] ^= nums[left];
         nums[left] ^= nums[right];
-        if (nums[left] == pivot && nums[right] == pivot)
-          ++left;
+        if (nums[left] == pivot && nums[right] == pivot) ++left;
       }
-      if (k < right)
-        end = right - 1;
-      else if (k > right)
-        begin = right + 1;
-      else
-        return nums[right];
+      if (k < right) end = right - 1;
+      else if (k > right) begin = right + 1;
+      else return nums[right];
     }
     return nums[end];
   }
