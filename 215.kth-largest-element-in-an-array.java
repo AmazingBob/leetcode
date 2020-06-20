@@ -34,8 +34,7 @@ class Solution {
   }
 
   public int findKthLargest(int[] nums, int k) {
-    return quickSelect(nums, nums.length-k, 0, nums.length-1);
+    return quickSelect(nums, nums.length - k, 0, nums.length - 1);
   }
 }
 // @lc code=end
-
