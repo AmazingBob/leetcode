@@ -10,8 +10,7 @@ import java.util.*;
 class Solution {
   public List<List<Integer>> subsets(int[] nums) {
     List<List<Integer>> res = new ArrayList<>();
-    if (nums == null || nums.length == 0) return res;
-    Arrays.sort(nums);
+    // Arrays.sort(nums);
     dfs(nums, 0, res, new ArrayList<>());
     return res;
   }
